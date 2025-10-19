@@ -21,6 +21,7 @@ class WelcomePage(ft.View):
 					label="Favorites",
 				),
 			],
+			on_change=lambda e: print(self.navigation_bar.page)
 		)
 			
 			

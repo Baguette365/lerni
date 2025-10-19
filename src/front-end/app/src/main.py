@@ -1,30 +1,21 @@
 import flet
 import flet as ft
+from views import WelcomePage
 from flet.core.types import TextAlign
 
 
 def main(page: ft.Page):
     page.title = "Lerni"
+    
 
     def route_change(route):
         page.views.clear()
-        page.floating_action_button = ft.FloatingActionButton(
-            icon=ft.Icons.ADD, shape=ft.CircleBorder()
-        )
-        page.floating_action_button_location = ft.FloatingActionButtonLocation.CENTER_DOCKED
         
-        page.views.append(
-            ft.View(
-                "/",
-                [
-                    ft.AppBar(title=ft.Text("Lerni", color=ft.Colors.BLACK),bgcolor="#003049", center_title=True, adaptive=True),
-                ],
-            )
-        )
-        if page.route == "/store":
+        page.views.append(WelcomePage.WelcomePage())
+        if page.route == "/Home":
             page.views.append(
                 ft.View(
-                    "/store",
+                    "/home",
                     [
                         ft.AppBar(title=ft.Text("Store"), bgcolor=ft.Colors.SURFACE_CONTAINER_HIGHEST),
                         ft.ElevatedButton("Go Home", on_click=lambda _: page.go("/")),
@@ -56,10 +47,11 @@ def main2(page: ft.Page):
                 icon=ft.Icons.BOOKMARK_BORDER,
                 selected_icon=ft.Icons.BOOKMARK,
                 label="Favorites",
+                
             ),
         ]
     )
     page.add(ft.Text("Body!"))
 
 
-ft.app(main2)
+ft.app(main)
